@@ -10,8 +10,6 @@
 
 // console.log('Stopping')
 
-const request = require('request')
-
 // const url = 'http://api.weatherapi.com/v1/current.json?key=934151fed33d42c99b485037220201&q=Morbi'
 
 // request({url: url,json:true},(error, response)=>{
@@ -21,18 +19,13 @@ const request = require('request')
 // })
 
 
-const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/London.json?access_token=pk.eyJ1IjoiZGV2ZWxvcGVydHdpdHRlciIsImEiOiJja3k2M3ppcTAwc2FsMnBwcXN0dzA5OHI3In0.KuPw6FbND3nSuG3sOZRBSQ'
+const request = require('request')
+const geoCode = require('./utils/geocode.js')
 
-request({url: url, json:true},(error, response) =>{
-
-    if(error){
-        console.log('Cannot connect to Weather Service!! Try Again Enabling your Internet!')
-    }else if(response.body.features.length === 0){
-        console.log('Cannot find Location please Search and Try Again!')
-    }else{
-        console.log(response.body.features[0].center[0]); 
-    }
-})  
+geoCode('Veraval ,Gujarat', (error,data) => {
+      console.log('Error:',error)
+      console.log('Data:',data)
+})
 
 
 
