@@ -9,7 +9,8 @@ const forecast = (longitude, latitude, callback) =>{
         }else if(response.body.length === 0){
             callback('Cannot find Location please Search and Try Again!')
         }else{
-            const data = response.body.location.name + ',' + response.body.location.country
+            const current = response.body.current
+            const data = 'Its' + ' ' +  current.condition.text + ', ' + current.temp_c + ' Degree Celsius'
             callback(undefined,data)
         }
     })
